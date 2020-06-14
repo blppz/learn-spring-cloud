@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -40,6 +41,17 @@ public class MainController3 {
     // <200,hi，port==82,[Content-Type:"text/plain;charset=UTF-8", Content-Length:"13", Date:"Sun, 14 Jun 2020 15:06:46 GMT", Keep-Alive:"timeout=60", Connection:"keep-alive"]>
     System.out.println(entity);
     return res;
+  }
+
+  /**
+   * 测试restTemplate获取一个map
+   */
+  @GetMapping("/client11")
+  public Object client11() {
+    String url = "http://provider/getMap";
+    final Map map = restTemplate.getForObject(url, Map.class);
+    System.out.println(map);
+    return map;
   }
 
 }

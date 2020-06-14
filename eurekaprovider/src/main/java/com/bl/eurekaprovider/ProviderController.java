@@ -1,11 +1,13 @@
 package com.bl.eurekaprovider;
 
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * @Deacription TODO
@@ -39,6 +41,14 @@ public class ProviderController {
     healthStatusService.setStatus(status);
     // 返回当前状态
     return healthStatusService.getStatus();
+  }
+
+  /**
+   * 用来测试restTemplate接收Map结果
+   */
+  @GetMapping("/getMap")
+  public Map<String, String> getMap() {
+    return Collections.singletonMap("id", "123");
   }
 
 }
