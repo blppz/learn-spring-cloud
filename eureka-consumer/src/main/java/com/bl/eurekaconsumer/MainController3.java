@@ -64,4 +64,15 @@ public class MainController3 {
     System.out.println(person);
     return person;
   }
+
+  /**
+   * 测试restTemplate获取一个person对象，并且传递参数
+   */
+  @GetMapping("/client13")
+  public Object client13() {
+    String url = "http://provider/getPerson2?name={name}";
+    final Person person = restTemplate.getForObject(url, Person.class, "BarryLee");
+    System.out.println(person);
+    return person;
+  }
 }

@@ -62,6 +62,17 @@ public class ProviderController {
     return person;
   }
 
+  /**
+   * 用来测试restTemplate接收Person对象结果，并且接收参数
+   */
+  @GetMapping("/getPerson2")
+  public Person getPerson2(String name) {
+    Person person = new Person();
+    person.setId(1);
+    person.setName(name);
+    return person;
+  }
+
 
 
 }
