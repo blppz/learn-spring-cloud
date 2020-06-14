@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -72,6 +73,18 @@ public class MainController3 {
   public Object client13() {
     String url = "http://provider/getPerson2?name={name}";
     final Person person = restTemplate.getForObject(url, Person.class, "BarryLee");
+    System.out.println(person);
+    return person;
+  }
+
+  /**
+   * 测试restTemplate get请求传递一个map
+   */
+  @GetMapping("/client14")
+  public Object client14() {
+    String url = "http://provider/getPerson2?name={name}";
+    final Map<String, String> map = Collections.singletonMap("name", "xixi");
+    final Person person = restTemplate.getForObject(url, Person.class, map);
     System.out.println(person);
     return person;
   }
