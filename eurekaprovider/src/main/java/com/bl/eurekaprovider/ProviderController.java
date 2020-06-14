@@ -51,4 +51,17 @@ public class ProviderController {
     return Collections.singletonMap("id", "123");
   }
 
+  /**
+   * 用来测试restTemplate接收Person对象结果
+   */
+  @GetMapping("/getPerson")
+  public Person getPerson() {
+    Person person = new Person();
+    person.setId(1);
+    person.setName("barry lee");
+    return person;
+  }
+
+
+
 }

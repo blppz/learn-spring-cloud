@@ -54,4 +54,14 @@ public class MainController3 {
     return map;
   }
 
+  /**
+   * 测试restTemplate获取一个person对象
+   */
+  @GetMapping("/client12")
+  public Object client12() {
+    String url = "http://provider/getPerson";
+    final Person person = restTemplate.getForObject(url, Person.class);
+    System.out.println(person);
+    return person;
+  }
 }
