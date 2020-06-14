@@ -88,4 +88,17 @@ public class MainController3 {
     System.out.println(person);
     return person;
   }
+
+  /**
+   * 测试restTemplate post请求传递一个map
+   */
+  @GetMapping("/client15")
+  public Object client15() {
+    String url = "http://provider/updatePerson";
+    final Map<String, String> map = Collections.singletonMap("name", "xixi");
+    final ResponseEntity<Person> res = restTemplate.postForEntity(url, map, Person.class);
+    System.out.println(res);
+    return res;
+  }
+
 }

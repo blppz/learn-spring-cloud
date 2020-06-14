@@ -2,9 +2,7 @@ package com.bl.eurekaprovider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.Map;
@@ -73,5 +71,12 @@ public class ProviderController {
     return person;
   }
 
+  /**
+   * 测试restTemplate post请求接收对象
+   */
+  @PostMapping("/updatePerson")
+  public Person updatePerson(@RequestBody Person person) {
+    return person;
+  }
 
 }
