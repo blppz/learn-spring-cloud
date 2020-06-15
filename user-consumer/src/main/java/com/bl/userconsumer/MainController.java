@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainController {
   @Autowired
-  private UserApi api;
+  private ConsumerApi api;
 
   @GetMapping("/alive")
   public String alive() {
