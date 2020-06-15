@@ -8,6 +8,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 /**
+ * 代理类
  * 拦截restTemplate的http请求
  * @Deacription 自定义http请求的头信息，同时保护get和post方法
  * @Author BarryLee

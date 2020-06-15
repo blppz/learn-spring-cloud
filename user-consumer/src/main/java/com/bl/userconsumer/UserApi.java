@@ -13,7 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  * 这一段在md-按组件分06里，实现比较赤裸
  * 这里的name只是定义了一个名字，没有实质性用处
  */
-@FeignClient(name = "xxoo", url = "http://localhost:9090")
+//@FeignClient(name = "xxoo", url = "http://localhost:9090")
+
+/**
+ * 这个是走Eureka、Ribbon的
+ * name是服务名，通过这个服务名来匹配服务列表对应ip+port
+ */
+@FeignClient(name = "user-provider")
 public interface UserApi {
 
   // 所谓OpenFeign可以识别SpringMVC注解，就是识别这个GetMapping，然后拼接到上边的url
