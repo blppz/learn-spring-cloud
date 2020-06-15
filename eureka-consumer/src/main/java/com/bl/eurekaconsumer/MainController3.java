@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -99,6 +102,23 @@ public class MainController3 {
     final ResponseEntity<Person> res = restTemplate.postForEntity(url, map, Person.class);
     System.out.println(res);
     return res;
+  }
+
+  /**
+   * 测试restTemplate - postForLocation
+   */
+  @GetMapping("/client16")
+  public Object client16(HttpServletResponse response) {
+    String url = "http://provider/postUri";
+    final Map<String, String> map = Collections.singletonMap("name", "memeda");
+    final URI uri = restTemplate.postForLocation(url, map, Person.class);
+    System.out.println(uri);
+    try {
+      response.sendRedirect(uri.toURL().toString());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return uri;
   }
 
 }

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.net.URI;
 import java.util.Collections;
 import java.util.Map;
 
@@ -79,4 +81,13 @@ public class ProviderController {
     return person;
   }
 
+  /**
+   * 用于测试postForLocation
+   */
+  @PostMapping("/postUri")
+  public URI postParam(@RequestBody Person person, HttpServletResponse response) throws Exception {
+    URI uri = new URI("https://www.baidu.com/s?wd=" + person.getName());
+    response.addHeader("Location", uri.toString());
+    return uri;
+  }
 }
