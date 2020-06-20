@@ -20,7 +20,10 @@
   </properties>
 
   <dependencies>
-
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-httpclient</artifactId>
+    </dependency>
     <!-- 引入自定义userApi -->
     <dependency>
       <groupId>com.bl.user-api</groupId>

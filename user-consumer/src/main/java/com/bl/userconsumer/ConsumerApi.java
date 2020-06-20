@@ -1,8 +1,14 @@
 package com.bl.userconsumer;
 
+import com.bl.userapi.Person;
 import com.bl.userapi.UserApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @Deacription 定义接口--api，通过这个接口，Feign帮我们调了UserProvider
@@ -30,4 +36,27 @@ public interface ConsumerApi extends UserApi {
 /*  // 所谓OpenFeign可以识别SpringMVC注解，就是识别这个GetMapping，然后拼接到上边的url
   @GetMapping("/alive")
   String alive();*/
+
+  /**
+   * 如果这里不屑@RequestParam，参数传不过去
+   * 这里的@GetMapping以及@RequestParam都是给Feign看的，它通过这些注解知道如何组织一个请求
+   * @param id
+   * @return
+   */
+  @GetMapping("/getMap")
+  Map<Integer, String> getMap(@RequestParam("id") Integer id);
+
+  @GetMapping("/getMap2")
+  Map<Integer, String> getMap2(@RequestParam("id") Integer id,@RequestParam("name") String name);
+
+  @GetMapping("/getMap3")
+  Map<Integer, String> getMap3(@RequestParam Map<String, Object> map);
+
+  @PostMapping("/postMap")
+  Map<Integer, String> postMap(Map<String, Object> map);
+
+  @Override
+  @PostMapping("/postPerson")
+  Person postPerson(@RequestBody Person person);
+
 }
