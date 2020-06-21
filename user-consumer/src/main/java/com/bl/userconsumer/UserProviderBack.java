@@ -10,10 +10,13 @@ import java.util.Map;
  * ...... No fallback instance of type class com.bl.userconsumer.UserProviderBack
  * found for feign client user-provider
  * 因为它是一个单例，是spring管理的
+ *
+ * 备用逻辑、兜底数据，降级就体现在这里
+ *
  * @Author BarryLee
  * @Date 2020/6/21 16:26
  */
-@Component("back1")
+@Component()
 public class UserProviderBack implements ConsumerApi{
 
   @Override
