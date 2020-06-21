@@ -1,9 +1,11 @@
 package com.bl.userconsumer;
 
 import com.bl.userapi.Person;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -83,16 +85,5 @@ public class MainController {
     person.setId(Integer.parseInt(map.get("id").toString()));
     person.setName(map.get("name").toString());
     return api.postPerson(person);
-  }
-
-  @GetMapping("/testHystrix")
-  @HystrixCommand(fallbackMethod = "fallback1")
-  public String testHystrix(String name) {
-    System.out.println("--testHystrix--");
-    return api.testHystrix(name);
-  }
-
-  private String fallback1(String name) {
-    return "fallback "+name;
   }
 }

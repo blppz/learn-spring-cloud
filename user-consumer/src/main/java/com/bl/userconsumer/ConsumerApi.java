@@ -14,6 +14,10 @@ import java.util.Map;
  * @Deacription 定义接口--api，通过这个接口，Feign帮我们调了UserProvider
  * @Author BarryLee
  * @Date 2020/6/15 21:36
+ * <p>
+ * 不结合eureka，就是自定义一个client名字。就用url属性指定 服务器列表。url=“http://ip:port/”
+ * 这一段在md-按组件分06里，实现比较赤裸
+ * 这里的name只是定义了一个名字，没有实质性用处
  */
 /**
  * 不结合eureka，就是自定义一个client名字。就用url属性指定 服务器列表。url=“http://ip:port/”
@@ -29,7 +33,7 @@ import java.util.Map;
  *
  * 写这个接口，可以给Java用，因为直接调接口很方便，但是不能做异构，比如有PHP，.Net来了，就再写个文档就完事了
  */
-@FeignClient(name = "user-provider")
+@FeignClient(name = "user-provider", fallback = UserProviderBack.class)
 public interface ConsumerApi extends UserApi {
 
   // extends 自定义 UserApi就不需要自己写下边这些代码了
@@ -47,7 +51,7 @@ public interface ConsumerApi extends UserApi {
   Map<Integer, String> getMap(@RequestParam("id") Integer id);
 
   @GetMapping("/getMap2")
-  Map<Integer, String> getMap2(@RequestParam("id") Integer id,@RequestParam("name") String name);
+  Map<Integer, String> getMap2(@RequestParam("id") Integer id, @RequestParam("name") String name);
 
   @GetMapping("/getMap3")
   Map<Integer, String> getMap3(@RequestParam Map<String, Object> map);
@@ -59,6 +63,4 @@ public interface ConsumerApi extends UserApi {
   @PostMapping("/postPerson")
   Person postPerson(@RequestBody Person person);
 
-  @GetMapping("/testHystrix")
-  String testHystrix(@RequestParam String name);
 }

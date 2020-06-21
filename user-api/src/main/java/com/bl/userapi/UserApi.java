@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Author BarryLee
  * @Date 2020/6/15 22:28
  */
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public interface UserApi {
   @GetMapping("/alive")
   String alive();

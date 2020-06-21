@@ -80,10 +80,4 @@ public class UserController implements UserApi {
     return person;
   }
 
-  @GetMapping("testHystrix")
-  public String testHystrix(String name) {
-    System.out.println("UserController " + name);
-    return name;
-  }
-
 }
