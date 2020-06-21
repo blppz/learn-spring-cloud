@@ -59,4 +59,6 @@ public interface ConsumerApi extends UserApi {
   @PostMapping("/postPerson")
   Person postPerson(@RequestBody Person person);
 
+  @GetMapping("/testHystrix")
+  String testHystrix(@RequestParam String name);
 }

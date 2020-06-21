@@ -20,4 +20,5 @@ public interface UserApi {
 
   @PostMapping("/postPerson")
   Person postPerson(@RequestBody Person person);
+
 }

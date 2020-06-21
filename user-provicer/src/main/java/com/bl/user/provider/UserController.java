@@ -33,13 +33,13 @@ public class UserController implements UserApi {
   public String alive() {
     try {
       System.out.println("准备睡");
-      Thread.sleep(500);
+      Thread.sleep(3000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
 
     int i = count.getAndIncrement();
-    System.out.println("====好的第：" + i + "次调用");
+    System.out.println("====第：" + i + "次调用，post=" + port);
     return "port:" + port;
   }
 
@@ -78,6 +78,12 @@ public class UserController implements UserApi {
     System.out.println("---UserController postPerson---");
     System.out.println(person);
     return person;
+  }
+
+  @GetMapping("testHystrix")
+  public String testHystrix(String name) {
+    System.out.println("UserController " + name);
+    return name;
   }
 
 }
