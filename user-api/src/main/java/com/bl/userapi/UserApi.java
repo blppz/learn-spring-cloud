@@ -18,6 +18,9 @@ public interface UserApi {
   @GetMapping("/alive")
   String alive();
 
+  @GetMapping("/alive2")
+  String alive2();
+
   @PostMapping("/postPerson")
   Person postPerson(@RequestBody Person person);
 

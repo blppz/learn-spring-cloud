@@ -31,16 +31,22 @@ public class UserController implements UserApi {
 
   @Override
   public String alive() {
-    try {
+   /* try {
       System.out.println("准备睡");
       Thread.sleep(3000);
     } catch (InterruptedException e) {
       e.printStackTrace();
-    }
+    }*/
 
+    int j = 1/0;
     int i = count.getAndIncrement();
     System.out.println("====第：" + i + "次调用，post=" + port);
     return "port:" + port;
+  }
+
+  @Override
+  public String alive2() {
+    return "alive2";
   }
 
   //@Override

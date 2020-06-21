@@ -33,6 +33,14 @@ public class MainController {
     return api.alive();
   }
 
+  @Autowired
+  private RestService restService;
+  @GetMapping("/alive2")
+  public String alive2() {
+    System.out.println("main controller alive2");
+    return restService.alive();
+  }
+
 
 /*  @GetMapping("/vip")
   public String vip() {

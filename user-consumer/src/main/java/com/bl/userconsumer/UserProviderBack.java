@@ -16,12 +16,17 @@ import java.util.Map;
  * @Author BarryLee
  * @Date 2020/6/21 16:26
  */
-@Component()
+@Component
 public class UserProviderBack implements ConsumerApi{
 
   @Override
   public String alive() {
     return "降级了";
+  }
+
+  @Override
+  public String alive2() {
+    return null;
   }
 
   @Override

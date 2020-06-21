@@ -33,7 +33,8 @@ import java.util.Map;
  *
  * 写这个接口，可以给Java用，因为直接调接口很方便，但是不能做异构，比如有PHP，.Net来了，就再写个文档就完事了
  */
-@FeignClient(name = "user-provider", fallback = UserProviderBack.class)
+//@FeignClient(name = "user-provider", fallback = UserProviderBack.class)
+@FeignClient(name = "user-provider", fallbackFactory = UserProviderBackFactory.class)
 public interface ConsumerApi extends UserApi {
 
   // extends 自定义 UserApi就不需要自己写下边这些代码了
