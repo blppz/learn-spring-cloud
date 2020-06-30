@@ -32,7 +32,7 @@ public class UserProviderBackFactory implements FallbackFactory<ConsumerApi> {
         if(throwable instanceof FeignException.InternalServerError) {
           return "远程服务器500:"+throwable.getMessage();
         }
-        return "xixi";
+        return "--熔断了--";
       }
 
       @Override

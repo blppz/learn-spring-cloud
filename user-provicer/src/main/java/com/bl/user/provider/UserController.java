@@ -38,10 +38,10 @@ public class UserController implements UserApi {
       e.printStackTrace();
     }*/
 
-    int j = 1/0;
+    //int j = 1/0;
     int i = count.getAndIncrement();
     System.out.println("====第：" + i + "次调用，post=" + port);
-    return "port:" + port;
+    return "user privider port:" + port;
   }
 
   @Override
