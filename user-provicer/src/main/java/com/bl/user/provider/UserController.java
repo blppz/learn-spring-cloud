@@ -39,14 +39,14 @@ public class UserController implements UserApi {
     }*/
 
     //int j = 1/0;
-    int i = count.getAndIncrement();
-    System.out.println("====第：" + i + "次调用，post=" + port);
+    //int i = count.getAndIncrement();
+    //System.out.println("====第：" + i + "次调用，post=" + port);
     return "user privider port:" + port;
   }
 
   @Override
   public String alive2() {
-    return "alive2";
+    return "provider port=" + port;
   }
 
   //@Override

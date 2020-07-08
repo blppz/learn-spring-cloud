@@ -3,6 +3,7 @@ package com.bl.userconsumer;
 import com.bl.userapi.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,12 @@ import java.util.Map;
  */
 @RestController
 public class MainController {
+  //@Qualifier("user-provider")
   @Autowired
   private ConsumerApi api;
+
+  @Value("${server.port}")
+  String port;
 
   //@Autowired
   //MashibingApi mapi;
@@ -35,10 +40,10 @@ public class MainController {
 
   @Autowired
   private RestService restService;
+
   @GetMapping("/alive2")
   public String alive2() {
-    System.out.println("main controller alive2");
-    return restService.alive();
+    return "consumer port=" + port + "," + restService.alive();
   }
 
 
